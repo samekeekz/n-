@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import List from '../../components/List/List'
+import Tabs from '../../components/Tabs/Tabs'
 
 const Home = () => {
   const [movies, setMovies] = useState([])
@@ -32,6 +33,10 @@ const Home = () => {
 
   return (
     <div className="">
+      <div className="flex w-full justify-between items-center mb-5">
+        <p>Recommended</p>
+        <Tabs />
+      </div>
       <List movies={movies} />
     </div>
   )

@@ -1,7 +1,10 @@
-import { useState } from 'react'
+type Props = {
+  activeTab: string
+  setActiveTab: (tab: string) => void
+}
 
-const Tabs = ({ activeTab, setActiveTab }) => {
-  const handleTabClick = (tab) => {
+const Tabs = ({ activeTab, setActiveTab }: Props) => {
+  const handleTabClick = (tab: string) => {
     setActiveTab(tab)
   }
 

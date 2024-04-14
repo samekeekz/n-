@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { to } from '../../../node_modules/@pkgjs/parseargs/utils'
 
 type Props = {
   id: string

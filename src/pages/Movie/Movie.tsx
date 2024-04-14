@@ -139,7 +139,7 @@ const Movie = () => {
       <div className="flex flex-col gap-10 items-start">
         <img
           src={`https://image.tmdb.org/t/p/original${movie?.backdrop_path}`}
-          alt={movie?.original_title}
+          alt={movie?.title}
           className="w-full grow rounded-[20px]"
         />
         <div className="flex justify-center rounded-[10px] p-8 bg-[#697791]">
@@ -156,7 +156,7 @@ const Movie = () => {
           </aside>
           <div className="body text-white">
             <h1 className="title text-3xl font-bold mb-4">
-              {movie?.belongs_to_collection.name}
+              {movie?.belongs_to_collection?.name}
             </h1>
             <div className="status mb-4">
               <span className="imdb mr-4">

@@ -3,13 +3,14 @@ import List from '../../components/List/List'
 import Tabs from '../../components/Tabs/Tabs'
 
 const Home = () => {
-  const [movies, setMovies] = useState([])
+  const [data, setData] = useState([])
+  const [activeTab, setActiveTab] = useState('movie')
 
   useEffect(() => {
     try {
       const fetchData = async () => {
         const response = await fetch(
-          'https://api.themoviedb.org/3/trending/all/day?language=en-US',
+          `https://api.themoviedb.org/3/trending/${activeTab}/day?language=en-US`,
           {
             method: 'GET',
             headers: {
@@ -21,23 +22,27 @@ const Home = () => {
         )
 
         if (!response.ok) return console.error('Error:', response.statusText)
-        const data = await response.json()
-        setMovies(data.results)
-        console.log(data)
+        const dataFromServer = await response.json()
+        setData(dataFromServer.results)
+        console.log(dataFromServer)
       }
       fetchData()
     } catch (error) {
       console.error(error)
     }
-  }, [])
+  }, [activeTab])
 
   return (
     <div className="">
       <div className="flex w-full justify-between items-center mb-5">
-        <p>Recommended</p>
-        <Tabs />
+        <h2 className="uppercase text-[#bab9be] font-medium">Recommended</h2>
+        <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
       </div>
-      <List movies={movies} />
+      {data.length > 0 ? (
+        <List movies={data} />
+      ) : (
+        <p className="text-white">Loading...</p>
+      )}
     </div>
   )
 }

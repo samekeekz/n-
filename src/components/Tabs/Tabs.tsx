@@ -1,27 +1,25 @@
 import { useState } from 'react'
 
-const Tabs = () => {
-  const [activeTab, setActiveTab] = useState('movies')
-
+const Tabs = ({ activeTab, setActiveTab }) => {
   const handleTabClick = (tab) => {
     setActiveTab(tab)
   }
 
   return (
-    <div className="flex justify-center space-x-4">
+    <div className="flex justify-center rounded-[10px] space-x-4 bg-[#ffffff0d] p-[6px] transition-colors duration-300 ease-in-out">
       <button
         className={`py-2 px-4 rounded-lg focus:outline-none ${
-          activeTab === 'movies' ? 'bg-blue-500 text-white' : 'text-gray-500'
+          activeTab === 'movie' ? 'bg-blue-500 text-white' : 'text-[#bab9be]'
         }`}
-        onClick={() => handleTabClick('movies')}
+        onClick={() => handleTabClick('movie')}
       >
         Movies
       </button>
       <button
         className={`py-2 px-4 rounded-lg focus:outline-none ${
-          activeTab === 'tvShows' ? 'bg-blue-500 text-white' : 'text-gray-500'
+          activeTab === 'tv' ? 'bg-blue-500 text-white' : 'text-[#bab9be]'
         }`}
-        onClick={() => handleTabClick('tvShows')}
+        onClick={() => handleTabClick('tv')}
       >
         TV Shows
       </button>
